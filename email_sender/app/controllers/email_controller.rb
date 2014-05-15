@@ -20,7 +20,6 @@ class EmailController < ApplicationController
 # end
 
   def email
-  	render nothing: true, status: 200
  #    @email = Email.new(email_params)
  # binding.pry
  #    # respond_to do |format|
@@ -32,10 +31,13 @@ class EmailController < ApplicationController
  #    # 		format.json { render json: @email.errors, status: :unprocessable_entity }
  #    # 	end
  #    # end
+   	email = email_params
+ 		SiteMailer.status_email(email[:email], email[:subject], email[:body]).deliver
+ 		render nothing: true, status: 200
   end
 
   private
   	def email_params
-  		params.require(:email).permit(:subject, :body)
+  		params.require(:email).permit(:subject, :body, :email)
   	end
 end
