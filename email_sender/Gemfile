@@ -36,9 +36,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :development do
+group :development, :test do
 	gem 'pry-rails'
 	gem 'dotenv-rails'
+	gem 'sidekiq'
 end
 
 # Use ActiveModel has_secure_password
