@@ -24,7 +24,6 @@ class ContactsController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
@@ -41,13 +40,26 @@ class ContactsController < ApplicationController
     redirect_to root_path
   end
 
+# #### CREATE METHOD IN SINATRA #####
+# get '/movies/create' do
+#   response = Typhoeus.post("localhost:3000/movies.json", 
+#     params: {movie: params[:movie]})
+#   redirect '/movies'
+# end
+
+
   def new_email
     # Should return a view that allows the user to create an email
+    load_contact
+    render :new_email
   end
 
   def send_email
     # Does the actual sending of the email by calling
     # the other rails server
+
+    response = Typhoeus.post('localhost:3001/email.json', params: {contact: params[:email]})
+    redirect_to email_sent_path
   end
 
   def sent_email

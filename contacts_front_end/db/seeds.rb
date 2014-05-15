@@ -8,8 +8,6 @@
 
 user = User.create(email: 'test@test.com', password: 'password', password_confirmation: 'password')
 
-binding.pry
-
 Contact.create([
   {name: "Bob", email: "bob@bob.com", phone: '5551234', photo: 'http://i.imgur.com/RkBOmq2.jpg', user_id: user.id},
   {name: "Sally", email: "sally@sally.com", phone: '5551235', photo: 'http://i.imgur.com/1v2oxMc.jpg', user_id: user.id},
